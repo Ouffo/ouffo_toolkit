@@ -1,12 +1,10 @@
 # Standard library
 import locale
-import logging
+from loguru import logger
 from datetime import datetime
 
 # Third party imports (need to be added to pyproject.toml)
 import click
-
-logger = logging.getLogger(__name__)
 
 
 @click.command()
@@ -24,8 +22,7 @@ def hello(name: str) -> None:
     month = now.strftime("%B")
     year = now.year
     click.echo(f"Hello {name}! Today, we are {weekday} {day} {month} {year}.")
-    logger.log(logging.INFO, "✅ Hello executed.")
-
+    logger.info("✅ Hello executed.")
 
 if __name__ == "__main__":
     hello()
