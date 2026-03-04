@@ -6,11 +6,12 @@ authors = [
     {name = "yufo fukuda",email = "fujimotohugo@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.11,<4.0"
 dependencies = [
     "requests (>=2.32.5,<3.0.0)",
     "logging (>=0.4.9.6,<0.5.0.0)",
-    "click (>=8.3.1,<9.0.0)"
+    "click (>=8.3.1,<9.0.0)",
+    "loguru (>=0.7.3,<0.8.0)"
 ]
 
 [tool.poetry]
@@ -28,7 +29,13 @@ dev = [
     "pytest (>=9.0.2,<10.0.0)",
     "ruff (>=0.15.4,<0.16.0)",
     "black (>=26.1.0,<27.0.0)",
-    "bandit[baseline] (>=1.9.4,<2.0.0)"
+    "bandit[baseline] (>=1.9.4,<2.0.0)",
+    "pre-commit (>=4.5.1,<5.0.0)"
+]
+docs = [
+    "mkdocstrings-python (>=2.0.3,<3.0.0)",
+    "mkdocs (>=1.6.1,<2.0.0)",
+    "mkdocs-material (>=9.7.4,<10.0.0)"
 ]
 
 
