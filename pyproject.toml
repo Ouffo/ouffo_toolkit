@@ -1,0 +1,62 @@
+[project]
+name = "clean-code-project"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "yufo fukuda",email = "fujimotohugo@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "requests (>=2.32.5,<3.0.0)",
+    "logging (>=0.4.9.6,<0.5.0.0)",
+    "click (>=8.3.1,<9.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "ouffo_toolkit", from = "src"}]
+
+[tool.poetry.scripts]
+hello = "ouffo_toolkit.cli:hello"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pytest (>=9.0.2,<10.0.0)",
+    "ruff (>=0.15.4,<0.16.0)",
+    "black (>=26.1.0,<27.0.0)",
+    "bandit[baseline] (>=1.9.4,<2.0.0)"
+]
+
+
+[tool.ruff]
+target-version = "py310" # Python version (examples: 39 for 3.9, 310 for 3.10, etc.)
+line-length = 120 # Maximum line-length for formatting
+exclude = [ # Scripts or folders to exclude from linting/formatting
+    "tests",
+    "validation_tests",
+    "notebooks",
+    "guidelines",    
+    "bin",
+]
+
+[tool.ruff.lint]
+ignore = [ # Rules to ignore. In this example these are all docstring (D) related rules.
+    "S113", # Usage of requests without timeout.
+    "N803", # Argument name should be lowercase (Will be an issue for X_train, X_test naming convention).
+    "N806", # Variable in function should be lowercase (Will be an issue for the same reason as N803).
+]
+select = [ # Sets of rules to check for
+    "I",    # isort
+    "S",    # bandit
+    "E",    # pycodestyle
+    "W",    # pycodestyle
+    "N",    # pep8-naming
+    "F",    # flake8
+    "T20",   # flake8-print plugin to make sure there are no print statements in the code.
+    "ANN",  # flake8-annotations plugin to make sure functions and methods are properly type annotated
+    "ARG",   # flake8-unused-arguments plugin to check for unused arguments that should be removed
+]
